@@ -54,11 +54,11 @@ void EZOSensor::loop() {
       this->wait_time_ = 300;
     }
     if (this->state_ & EZO_STATE_SEND_CALIBRATION) {
-      if (this->calibration_type_ == CalType.CAL_SINGLE) {
+      if (this->calibration_type_ == CAL_SINGLE) {
         len = sprintf((char *) buf, "Cal,%0.3f", this->calibration_value_);
-      } else if (this->calibration_type_ == CalType.CAL_LOW) {
+      } else if (this->calibration_type_ == CAL_LOW) {
         len = sprintf((char *) buf, "Cal,low,%0.3f", this->calibration_value_);
-      } else if (this->calibration_type_ == CalType.CAL_MEDIUM) {
+      } else if (this->calibration_type_ == CAL_MEDIUM) {
         len = sprintf((char *) buf, "Cal,mid,%0.3f", this->calibration_value_);
       } else {
         len = sprintf((char *) buf, "Cal,high,%0.3f", this->calibration_value_);
