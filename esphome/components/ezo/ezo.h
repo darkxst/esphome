@@ -25,9 +25,10 @@ class EZOSensor : public sensor::Sensor, public PollingComponent, public i2c::I2
   uint32_t wait_time_ = 0;
   uint16_t state_ = 0;
   float tempcomp_;
-  void set_probe_type(float probe_type);
-  void set_calibration_single(float value);
-  void set_calibration_point(int point, float value);
+  float probe_type_;
+  float calibration_value_;
+  uint16_t calibration_type_;
+
 };
 
 }  // namespace ezo
