@@ -53,7 +53,7 @@ void EZOSensor::loop() {
     }
     if (this->state_ & EZO_STATE_SEND_PROBE_TYPE) {
       int len = sprintf((char *) buf, "K,%0.3f", this->probe_type_);
-      this->write_bytes_raw(buf, len);
+      this->write(buf, len);
       this->state_ = EZO_STATE_WAIT | EZO_STATE_WAIT_PROBE_TYPE;
       this->start_time_ = millis();
       this->wait_time_ = 300;
@@ -68,7 +68,7 @@ void EZOSensor::loop() {
       } else {
         len = sprintf((char *) buf, "Cal,high,%0.3f", this->calibration_value_);
       }
-      this->write_bytes_raw(buf, len);
+      this->write(buf, len);
       this->state_ = EZO_STATE_WAIT | EZO_STATE_WAIT_CALIBRATION;
       this->start_time_ = millis();
       this->wait_time_ = 300;
