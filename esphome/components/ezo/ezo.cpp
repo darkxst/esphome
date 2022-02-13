@@ -15,11 +15,6 @@ static const uint16_t EZO_STATE_WAIT_PROBE_TYPE = 16;
 static const uint16_t EZO_STATE_SEND_CALIBRATION = 32;
 static const uint16_t EZO_STATE_WAIT_CALIBRATION = 64;
 
-static const uint16_t CAL_SINGLE = 0;
-static const uint16_t CAL_LOW = 1;
-static const uint16_t CAL_MEDIUM = 2;
-static const uint16_t CAL_HIGH = 3;
-
 void EZOSensor::dump_config() {
   LOG_SENSOR("", "EZO", this);
   LOG_I2C_DEVICE(this);
@@ -59,11 +54,11 @@ void EZOSensor::loop() {
       this->wait_time_ = 300;
     }
     if (this->state_ & EZO_STATE_SEND_CALIBRATION) {
-      if (this->calibration_type_ == CAL_SINGLE) {
+      if (this->calibration_type_ == CalType.CAL_SINGLE) {
         len = sprintf((char *) buf, "Cal,%0.3f", this->calibration_value_);
-      } else if (this->calibration_type_ == CAL_LOW) {
+      } else if (this->calibration_type_ == CalType.CAL_LOW) {
         len = sprintf((char *) buf, "Cal,low,%0.3f", this->calibration_value_);
-      } else if (this->calibration_type_ == CAL_MEDIUM) {
+      } else if (this->calibration_type_ == CalType.CAL_MEDIUM) {
         len = sprintf((char *) buf, "Cal,mid,%0.3f", this->calibration_value_);
       } else {
         len = sprintf((char *) buf, "Cal,high,%0.3f", this->calibration_value_);

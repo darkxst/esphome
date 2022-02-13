@@ -28,7 +28,12 @@ class EZOSensor : public sensor::Sensor, public PollingComponent, public i2c::I2
   float probe_type_;
   float calibration_value_;
   uint16_t calibration_type_;
-
+  enum CalType {
+    CAL_SINGLE = 0;
+    CAL_LOW = 1;
+    CAL_MEDIUM = 2;
+    CAL_HIGH = 3
+  }
 };
 
 }  // namespace ezo
