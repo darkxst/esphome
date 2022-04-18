@@ -66,7 +66,7 @@ void EZOSensor::loop() {
       this->write(buf, len);
       this->state_ = EZO_STATE_WAIT | EZO_STATE_WAIT_CALIBRATION;
       this->start_time_ = millis();
-      this->wait_time_ = 300;
+      this->wait_time_ = 900;
     }
     return;
   }
